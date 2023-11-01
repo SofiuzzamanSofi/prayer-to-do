@@ -1,28 +1,86 @@
-# React + TypeScript + Vite
+<h1 align="center">
+SOB-JOBS
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br/>
 
-Currently, two official plugins are available:
+This is a [NextJS](https://nextjs.org/) project create with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Live Preview site: [Sob-Jobs](https://sob-jobs.vercel.app/)
 
-## Expanding the ESLint configuration
+### server-site: [sob-jobs-server](https://sob-jobs-server-via-cli.vercel.app)
+### server-Demo: [sob-jobs-live-demo](https://drive.google.com/file/d/1eS-0KH2XoqCemHbG1hLxM0N-nQvMOkjE/view?usp=sharing)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Live Demo
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+[
+![Alt text](image.png)](https://drive.google.com/file/d/1eS-0KH2XoqCemHbG1hLxM0N-nQvMOkjE/view?usp=sharing)
+
+<br/>
+<br/>
+
+```bash
+With-Cookies    : https://sob-job.vercel.app  ( Work Only Localhost )
+Without-Cookies : https://sob-jobs.vercel.app
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# prayer-to-do
+<br/>
+
+## Cloning and Installing dependencies
+
+First clone this project:
+
+```bash
+git clone https://github.com/SofiuzzamanSofi/sob-jobs.git
+```
+
+Then install dependencies and modules files:
+
+```bash
+npm install
+#or
+npm i
+#or
+yarn
+#or
+pnpm
+```
+## Getting Started
+
+Email & Passwork:
+
+```bash
+Employer:
+        email: employer@gmail.com
+        password: 123456
+Candidate:
+        email:user@gmail.com
+        password: 123456
+```
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `src/app/layout.tsx`. The page auto-updates as you edit the file.
+
+<br/>
+
+## Others
+
+Comming soon...
+
+<br/>
+
+<h3 align="center">
+**Thank You**
+</h3>
