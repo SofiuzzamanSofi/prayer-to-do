@@ -59,17 +59,19 @@ You can start editing clinet side the page by modifying `src/main.tsx`. The page
 
 ## Technology
 
-server side:
-<br> • `node.js`
-<br> • `expressjs`
-<br> • `typescript`
-<br> • `mongoose`
-
 
 client side:
 <br> • `Vite`
 <br> • `React.js`
 <br> • `typescript`
+
+server side:
+<br> • `node.js`
+<br> • `expressjs`
+<br> • `typescript`
+
+database:
+<br> • `mongoDB(mongoose)`
 
 ## Others
 
