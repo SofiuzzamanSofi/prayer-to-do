@@ -1,29 +1,15 @@
 <h1 align="center">
-SOB-JOBS
+Prayer-Todo
 </h1>
 
 <br/>
 
-This is a [NextJS](https://nextjs.org/) project create with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [React](https://nextjs.org/) project create with [`yarn create vite`](https://vitejs.dev/guide/).
 
-### Live Preview site: [Sob-Jobs](https://sob-jobs.vercel.app/)
+### Live Preview site: Up-Commint..
 
-### server-site: [sob-jobs-server](https://sob-jobs-server-via-cli.vercel.app)
-### server-Demo: [sob-jobs-live-demo](https://drive.google.com/file/d/1eS-0KH2XoqCemHbG1hLxM0N-nQvMOkjE/view?usp=sharing)
-
-
-## Live Demo
-
-[
-![Alt text](image.png)](https://drive.google.com/file/d/1eS-0KH2XoqCemHbG1hLxM0N-nQvMOkjE/view?usp=sharing)
-
-<br/>
-<br/>
-
-```bash
-With-Cookies    : https://sob-job.vercel.app  ( Work Only Localhost )
-Without-Cookies : https://sob-jobs.vercel.app
-```
+### server-site: Up-Commint..
+### server-Demo: Up-Commint..
 
 <br/>
 
@@ -32,7 +18,14 @@ Without-Cookies : https://sob-jobs.vercel.app
 First clone this project:
 
 ```bash
-git clone https://github.com/SofiuzzamanSofi/sob-jobs.git
+git clone https://github.com/SofiuzzamanSofi/prayer-todo.git
+```
+Then go to server or client code:
+
+```bash
+cd server
+#or
+cd client
 ```
 
 Then install dependencies and modules files:
@@ -46,20 +39,8 @@ yarn
 #or
 pnpm
 ```
-## Getting Started
 
-Email & Passwork:
-
-```bash
-Employer:
-        email: employer@gmail.com
-        password: 123456
-Candidate:
-        email:user@gmail.com
-        password: 123456
-```
-
-First, run the development server:
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -69,11 +50,26 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
-You can start editing the page by modifying `src/app/layout.tsx`. The page auto-updates as you edit the file.
+You can also start editing server side the page by modifying `src/server.ts`. The page auto-updates as you edit the file.
+You can start editing clinet side the page by modifying `src/main.tsx`. The page auto-updates as you edit the file.
 
 <br/>
+
+## Technology
+
+server side:
+<br> • `node.js`
+<br> • `expressjs`
+<br> • `typescript`
+<br> • `mongoose`
+
+
+client side:
+<br> • `Vite`
+<br> • `React.js`
+<br> • `typescript`
 
 ## Others
 
