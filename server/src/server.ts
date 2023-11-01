@@ -4,6 +4,7 @@ import cors from "cors";
 import express from "express";
 import connectDb from "./utils/lib/mongodb";
 import colors from 'colors';
+import errorHandler from "./utils/middleware/errorHandler";
 
 // initialized the app and port
 const app = express();
@@ -37,6 +38,7 @@ app.all("*", (req, res) => {
 });
 
 //global error handler
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(colors.bgCyan(`to-do server listening on port: ${port}`))
