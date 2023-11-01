@@ -5,6 +5,7 @@ import express from "express";
 import connectDb from "./utils/lib/mongodb";
 import colors from 'colors';
 import errorHandler from "./utils/middleware/errorHandler";
+import route from "./route/v1/index"
 
 // initialized the app and port
 const app = express();
@@ -22,6 +23,7 @@ try {
 };
 
 //routes
+app.use("/api/v1", route());
 
 //home || testing route 
 app.get("/", (req, res) => {
