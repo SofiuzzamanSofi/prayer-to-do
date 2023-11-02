@@ -13,7 +13,7 @@ const taskSchema = new mongoose.Schema(
             required: true,
         },
         state: {
-            type: [String], // Use [String] to define an array of strings
+            type: [String],
             required: true,
             enum: ["todo", "in-progress", "done"],
         }
