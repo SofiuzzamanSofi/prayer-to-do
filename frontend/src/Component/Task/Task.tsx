@@ -20,20 +20,29 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                     id='todo'
                     className={style.todo_progress_done}
                 >
-                    todo
+                    <h1>Todo</h1>
+                    <div className={style.task_card}>
+                        todo
+                    </div>
                 </div>
 
                 <div
                     id='in-progress'
                     className={style.todo_progress_done}
                 >
-                    doing
+                    <h1>In-Progress</h1>
+                    <div className={style.task_card}>
+                        in-progress
+                    </div>
                 </div>
                 <div
                     id='done'
                     className={style.todo_progress_done}
                 >
-                    done
+                    <h1> Done</h1>
+                    <div className={style.task_card}>
+                        done
+                    </div>
                 </div>
             </div>
         </div>

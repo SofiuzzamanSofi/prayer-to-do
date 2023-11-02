@@ -18,3 +18,15 @@
     width: 17.5rem;
     border: 1px solid indigo;
 }
+
+.todo_progress_done h1 {
+    font-size: 18px;
+    padding: 4px;
+}
+
+.task_card {
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 4px;
+}
