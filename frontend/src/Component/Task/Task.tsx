@@ -38,7 +38,7 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                                             {task.description}
                                         </p>
                                         <p className={style.todo_card_state}>
-                                            Status: {task.state}
+                                            Status: <button>{task.state}</button>
                                         </p>
                                     </div>
                                 ))

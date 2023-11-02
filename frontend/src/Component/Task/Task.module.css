@@ -16,7 +16,7 @@
 
 .todo_progress_done {
     width: 17.5rem;
-    border: 1px solid indigo;
+    /* border: 1px solid indigo; */
 }
 
 .todo_progress_done h1 {
@@ -31,9 +31,9 @@
 
 .task_card {
     border-radius: 5px;
-    border: 1px solid rgb(73, 73, 73);
+    /* border: 1px solid rgb(73, 73, 73); */
     padding: 4px;
-    box-shadow: 0 0 1px;
+    box-shadow: 0 0 5px rgb(73, 73, 73);
 }
 
 .task_card:hover {
@@ -46,7 +46,7 @@
     background-color: rgb(26, 25, 25);
     border: none;
     color: white;
-    rotate: 2deg;
+    transform: rotate(2deg);
 }
 
 .todo_card_title {
