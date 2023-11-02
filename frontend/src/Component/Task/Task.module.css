@@ -10,8 +10,11 @@
 }
 
 .task_all_tasks {
-    text-align: center;
-    font-size: 36px;
-    border: 1px solid red;
-    margin: 0;
+    display: flex;
+    gap: .5rem;
+}
+
+.todo_progress_done {
+    width: 17.5rem;
+    border: 1px solid indigo;
 }

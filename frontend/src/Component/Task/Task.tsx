@@ -7,7 +7,7 @@ interface TaskProps {
 
 const Task: FC<TaskProps> = ({ }) => {
 
-
+    console.log(':',);
 
     return (
         <div>
@@ -15,14 +15,23 @@ const Task: FC<TaskProps> = ({ }) => {
                 <h1>Task</h1>
             </div>
             <div className={style.task_all_tasks}>
-                <div id='todo'>
+                <div
+                    id='todo'
+                    className={style.todo_progress_done}
+                >
                     todo
                 </div>
 
-                <div id='in-progress'>
+                <div
+                    id='in-progress'
+                    className={style.todo_progress_done}
+                >
                     doing
                 </div>
-                <div id='done'>
+                <div
+                    id='done'
+                    className={style.todo_progress_done}
+                >
                     done
                 </div>
             </div>
