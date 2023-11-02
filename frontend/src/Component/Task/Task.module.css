@@ -20,13 +20,43 @@
 }
 
 .todo_progress_done h1 {
-    font-size: 18px;
+    font-size: 24px;
     padding: 4px;
 }
 
-.task_card {
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 4px;
+.todo_card_list {
+    display: grid;
+    gap: 1rem;
 }
+
+.task_card {
+    border-radius: 5px;
+    border: 1px solid rgb(73, 73, 73);
+    padding: 4px;
+    box-shadow: 0 0 1px;
+}
+
+.task_card:hover {
+    cursor: pointer;
+    border: 1px solid rgb(128, 127, 127);
+    transform: scale(.99);
+}
+
+.task_card:active {
+    background-color: rgb(26, 25, 25);
+    border: none;
+    color: white;
+    rotate: 2deg;
+}
+
+.todo_card_title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.todo_card_description {
+    font-size: 14px;
+}
+
+.todo_card_state {}
