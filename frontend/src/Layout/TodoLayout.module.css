@@ -16,4 +16,8 @@
 }
 
 /* width <1024 px = small device  */
-@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 1024px) {
+    .layout_menu {
+        display: block;
+    }
+}
