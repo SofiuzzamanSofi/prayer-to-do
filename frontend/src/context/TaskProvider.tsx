@@ -1,22 +1,23 @@
 import axios from 'axios';
-import { FC, createContext, useEffect, useState, ReactNode } from 'react';
+import { FC, createContext, useEffect, useState, ReactNode, useContext } from 'react';
 import { TaskInfoTypes, TaskTypes } from '../typesInterface/typesInterface';
 
 interface TaskProviderProps {
     children: ReactNode
 }
 
-const TaskContext = createContext<TaskInfoTypes | undefined>(undefined);
+export const TaskContext = createContext<TaskInfoTypes | undefined>(undefined);
 
-const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
+export const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
     const [taskList, setTaskList] = useState<TaskTypes[]>();
     const [loading, setLoading] = useState<boolean>(true);
 
-    console.log('taskList:', taskList);
+    // console.log('taskList:', taskList);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // console.log('fetch-data-effect-call:');
                 const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/all-task`);
                 setTaskList(response.data.data);
                 setLoading(false);
@@ -35,7 +36,3 @@ const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
         </TaskContext.Provider>
     );
 };
-
-export default TaskProvider;
-
-// ... (your interface definitions remain the same)

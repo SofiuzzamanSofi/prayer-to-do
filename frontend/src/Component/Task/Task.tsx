@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import style from "./Task.module.css"
+import { TaskTypes } from '../../typesInterface/typesInterface';
 
 interface TaskProps {
-
+    taskList: TaskTypes[]
 };
 
-const Task: FC<TaskProps> = ({ }) => {
+const Task: FC<TaskProps> = ({ taskList }) => {
 
-    console.log(':',);
+    console.log('taskList:', taskList);
 
     return (
         <div>

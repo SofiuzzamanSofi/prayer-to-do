@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import LeftMenu from '../Component/LeftMenu/LeftMenu';
 import Task from '../Component/Task/Task';
-import style from "./TodoLayout.module.css"
+import style from "./TodoLayout.module.css";
+import { TaskContext, } from "../context/TaskProvider"
 
 const TodoLayout: React.FC = () => {
 
-    // console.log(import.meta.env.VITE_BACKEND_URL);
+    const taskInfo = useContext(TaskContext);
 
     return (
         <section className={style.layout_menu}>
@@ -14,7 +15,12 @@ const TodoLayout: React.FC = () => {
                 <LeftMenu />
             </aside>
             <aside className={style.right_main_view_menu}>
-                <Task />
+                {
+                    !taskInfo?.taskList ?
+                        ""
+                        :
+                        <Task taskList={taskInfo?.taskList} />
+                }
             </aside>
 
             <Outlet />
