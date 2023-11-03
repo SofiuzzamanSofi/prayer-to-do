@@ -1,10 +1,13 @@
-.left_menu_div {}
+.left_menu_div {
+    padding-top: 15px;
+}
 
 .left_menu_div_pic {
     margin: 0.75rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* border: 1px solid yellow; */
 }
 
 .left_menu_image_with_dropdown {

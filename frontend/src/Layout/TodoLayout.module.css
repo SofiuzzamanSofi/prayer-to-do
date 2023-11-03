@@ -2,12 +2,14 @@
     display: flex;
     gap: 2rem;
     /* overflow-x: scroll; */
+    border: 1px solid greenyellow;
 }
 
 .lef_menu {
     width: 17.5rem;
+    min-width: 17.5rem;
     min-height: 100vh;
-    /* border: 0.1px solid green; */
+    border: 0.1px solid green;
     box-shadow: 0 0 5px rgb(73, 73, 73);
 }
 
@@ -23,5 +25,9 @@
 @media only screen and (max-width: 1024px) {
     .layout_menu {
         display: block;
+    }
+
+    .lef_menu {
+        display: none;
     }
 }

@@ -1,5 +1,5 @@
 .task_h1_tag {
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 .task_h1_tag h1 {
@@ -16,6 +16,7 @@
 
 .todo_progress_done {
     width: 17.5rem;
+    min-width: 17.5rem;
     /* border: 1px solid indigo; */
 }
 
