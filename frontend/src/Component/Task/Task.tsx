@@ -10,6 +10,12 @@ const Task: FC<TaskProps> = ({ taskList }) => {
 
     console.log('taskList:', taskList);
 
+    const todoTask = taskList.filter((task) => task.state === "todo");
+    const progressTask = taskList.filter((task) => task.state === "in-progress");
+    const doneTask = taskList.filter((task) => task.state === "done");
+
+    console.log('todoTask, progressTask, doneTask:', todoTask, progressTask, doneTask);
+
     return (
         <div>
             <div className={style.task_h1_tag}>

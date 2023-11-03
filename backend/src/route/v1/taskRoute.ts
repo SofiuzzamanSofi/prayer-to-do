@@ -1,7 +1,9 @@
 import express from 'express';
-import { getAllTaskController } from '../../controller/tasjsController';
+import { addTaskController, editTaskController, getAllTaskController } from '../../controller/tasjsController';
 
 export default (router: express.Router) => {
 
-    router.get("/all-task", getAllTaskController) // get all tasks
+    router.get("/all-task", getAllTaskController) // get all task
+    router.post("/all-task", addTaskController) // post a task
+    router.patch("/all-task", editTaskController) // update a task only update 
 };
