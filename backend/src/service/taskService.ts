@@ -15,7 +15,7 @@ export const getAllTaskService = async (
 };
 
 // add a task
-export const addTaskService = async (
+export const postTaskService = async (
     next: express.NextFunction,
     handleTaskData: TaskTypes
 ) => {
@@ -28,7 +28,7 @@ export const addTaskService = async (
 };
 
 // edit a task
-export const editTaskService = async (
+export const patchTaskService = async (
     next: express.NextFunction,
     handleTaskData: TaskTypes
 ) => {
@@ -42,6 +42,18 @@ export const editTaskService = async (
                 new: true
             }
         );
+        return tasks;
+    } catch (error) {
+        next(error);
+    }
+};
+// delete a task
+export const deleteTaskService = async (
+    next: express.NextFunction,
+    _id: string,
+) => {
+    try {
+        const tasks = await TaskModel.findByIdAndDelete(_id);
         return tasks;
     } catch (error) {
         next(error);
