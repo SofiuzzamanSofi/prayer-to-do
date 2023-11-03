@@ -4,7 +4,6 @@ import LeftMenu from '../Component/LeftMenu/LeftMenu';
 import Task from '../Component/Task/Task';
 import style from "./TodoLayout.module.css";
 import { TaskContext, } from "../context/TaskProvider"
-import "../index.css"
 
 const TodoLayout: React.FC = () => {
 
