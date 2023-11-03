@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FC, createContext, useEffect, useState, ReactNode, useContext } from 'react';
+import { FC, createContext, useEffect, useState, ReactNode } from 'react';
 import { TaskInfoTypes, TaskTypes } from '../typesInterface/typesInterface';
 
 interface TaskProviderProps {
@@ -11,6 +11,7 @@ export const TaskContext = createContext<TaskInfoTypes | undefined>(undefined);
 export const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
     const [taskList, setTaskList] = useState<TaskTypes[]>();
     const [loading, setLoading] = useState<boolean>(true);
+    const [reloadData, setreloadData] = useState<boolean>(true);
 
     // console.log('taskList:', taskList);
 

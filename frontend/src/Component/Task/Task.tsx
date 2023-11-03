@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
 import style from "./Task.module.css"
-import { TaskTypes } from '../../typesInterface/typesInterface';
+import { TaskTypes, EditTaskTypes } from '../../typesInterface/typesInterface';
 import TaskCard from '../TaskCard/TaskCard';
-
+import axios from 'axios';
+import toast from 'react-hot-toast';
 interface TaskProps {
     taskList: TaskTypes[]
 };
@@ -12,15 +13,24 @@ const Task: FC<TaskProps> = ({ taskList }) => {
     const [gragElementDiv, setgragElementDiv] = useState<HTMLDivElement | null>(null);
     const [gragElementData, setgragElementData] = useState<TaskTypes | null>(null);
 
-    // console.log('taskList:', taskList);
+    // toast.success("hlelo")
+    // toast.error("error")
+
+    const modifyTask = async (data: EditTaskTypes) => {
+        try {
+            const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/patch-task`, data);
+            console.log('response.data:', response.data);
+            toast.success("edit success")
+            return response.data;
+        } catch (error) {
+            toast.error("Update task failed, Try again later.")
+        }
+    };
 
     const todoTask = taskList.filter((task) => task.state === "todo");
     const progressTask = taskList.filter((task) => task.state === "in-progress");
     const doneTask = taskList.filter((task) => task.state === "done");
 
-    // console.log('todoTask, :', todoTask,);
-    // console.log('progressTask, :', progressTask,);
-    // console.log('doneTask:', doneTask);
 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
@@ -50,10 +60,14 @@ const Task: FC<TaskProps> = ({ taskList }) => {
         // console.log('handleDrop:', e.target);
         // console.log('handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
 
-        // console.log('handleDropData:', gragElementData);
+        console.log('handleDropData:', gragElementData);
         if (statusName !== gragElementData?.state) {
-
-            console.log('NOT_MATCH_handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
+            // console.log('NOT_MATCH_handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
+            const newData = { ...gragElementData, state: statusName };
+            if (gragElementData && newData) {
+                modifyTask(newData);
+            }
+            console.log('newData:', newData);
         }
 
         e.currentTarget.appendChild(gragElementDiv!)
