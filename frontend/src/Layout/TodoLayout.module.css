@@ -1,18 +1,22 @@
-.lef_menu {
-    width: 17.5rem;
-    height: 100vh;
-    border: 0.1px solid green;
-}
-
-.right_main_view_menu {
-    border: 2px solid red;
-    padding: 1rem;
-    flex-grow: 1;
-}
-
 .layout_menu {
     display: flex;
     gap: 2rem;
+    /* overflow-x: scroll; */
+}
+
+.lef_menu {
+    width: 17.5rem;
+    min-height: 100vh;
+    /* border: 0.1px solid green; */
+    box-shadow: 0 0 5px rgb(73, 73, 73);
+}
+
+.right_main_view_menu {
+    border: 1px solid red;
+    padding: 1rem;
+    flex-grow: 1;
+    box-shadow: 0 0 5px rgb(73, 73, 73);
+    overflow-x: scroll;
 }
 
 /* width <1024 px = small device  */

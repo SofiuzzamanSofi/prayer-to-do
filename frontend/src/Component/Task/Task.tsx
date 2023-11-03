@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import style from "./Task.module.css"
 import { TaskTypes } from '../../typesInterface/typesInterface';
+import TaskCard from '../TaskCard/TaskCard';
 
 interface TaskProps {
     taskList: TaskTypes[]
@@ -8,13 +9,15 @@ interface TaskProps {
 
 const Task: FC<TaskProps> = ({ taskList }) => {
 
-    console.log('taskList:', taskList);
+    // console.log('taskList:', taskList);
 
     const todoTask = taskList.filter((task) => task.state === "todo");
     const progressTask = taskList.filter((task) => task.state === "in-progress");
     const doneTask = taskList.filter((task) => task.state === "done");
 
-    console.log('todoTask, progressTask, doneTask:', todoTask, progressTask, doneTask);
+    console.log('todoTask, :', todoTask,);
+    console.log('progressTask, :', progressTask,);
+    console.log('doneTask:', doneTask);
 
     return (
         <div>
@@ -26,27 +29,14 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                     id='todo'
                     className={style.todo_progress_done}
                 >
-                    <h1>• Todo</h1>
+                    <h1>• Todo {todoTask ? todoTask.length : ""}</h1>
                     <div className={style.todo_card_list}>
                         {
-                            !taskList ?
+                            !todoTask ?
                                 ""
                                 :
-                                taskList.map((task, index) => (
-                                    <div key={index} className={style.task_card}>
-                                        <p className={style.todo_card_title}>
-                                            {task.title}
-                                        </p>
-                                        <p
-                                            className={style.todo_card_description}
-                                            title={task.description}
-                                        >
-                                            {task.description}
-                                        </p>
-                                        <p className={style.todo_card_state}>
-                                            Status: <button>{task.state}</button>
-                                        </p>
-                                    </div>
+                                todoTask.map((task, index) => (
+                                    <TaskCard key={index} task={task} />
                                 ))
                         }
                     </div>
@@ -56,18 +46,32 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                     id='in-progress'
                     className={style.todo_progress_done}
                 >
-                    <h1>• In-Progress</h1>
-                    <div className={style.task_card}>
-                        in-progress
+                    <h1>• In-Progress {progressTask ? progressTask.length : ""}</h1>
+                    <div className={style.todo_card_list}>
+                        {
+                            !progressTask ?
+                                ""
+                                :
+                                progressTask.map((task, index) => (
+                                    <TaskCard key={index} task={task} />
+                                ))
+                        }
                     </div>
                 </div>
                 <div
                     id='done'
                     className={style.todo_progress_done}
                 >
-                    <h1>• Done</h1>
-                    <div className={style.task_card}>
-                        done
+                    <h1>• Done {doneTask ? doneTask.length : ""}</h1>
+                    <div className={style.todo_card_list}>
+                        {
+                            !doneTask ?
+                                ""
+                                :
+                                doneTask.map((task, index) => (
+                                    <TaskCard key={index} task={task} />
+                                ))
+                        }
                     </div>
                 </div>
             </div>

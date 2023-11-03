@@ -1,0 +1,30 @@
+.task_card {
+    border-radius: 5px;
+    border: 1px solid rgb(73, 73, 73);
+    padding: 0 16px;
+    margin: 0;
+    box-shadow: 0 0 5px rgb(73, 73, 73);
+}
+
+.task_card:hover {
+    cursor: pointer;
+    border: 1px solid rgb(128, 127, 127);
+    transform: scale(.99);
+}
+
+.task_card:active {
+    background-color: rgb(26, 25, 25);
+    border: 1px solid rgb(226, 223, 223);
+    color: white;
+    transform: rotate(2deg);
+}
+
+.todo_card_title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.todo_card_description {
+    font-size: 14px;
+}
