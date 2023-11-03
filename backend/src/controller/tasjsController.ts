@@ -13,12 +13,12 @@ export const getAllTaskController = async (
         if (!getTaskData) {
             return res.status(200).json({
                 success: false,
-                message: `Job data not found.`,
+                message: `Task Data not found.`,
             });
         } else {
             return res.status(200).json({
                 success: true,
-                message: "Successfully got all jobs.",
+                message: "Successfully got all Task.",
                 data: getTaskData,
             });
         };
@@ -33,7 +33,7 @@ export const postTaskController = async (
     res: express.Response,
     next: express.NextFunction,
 ) => {
-    const { handleTaskData } = req?.body;
+    const handleTaskData = req?.body;
     console.log("hitted add a task.");
     if (!handleTaskData) {
         return res.status(400).json({
@@ -46,12 +46,12 @@ export const postTaskController = async (
         if (!getTaskData) {
             return res.status(200).json({
                 success: false,
-                message: `Job data not found.`,
+                message: `Task Data not found.`,
             });
         } else {
             return res.status(200).json({
                 success: true,
-                message: "Successfully got all jobs.",
+                message: "Successfully add a task.",
                 data: getTaskData,
             });
         };
@@ -66,7 +66,7 @@ export const patchTaskController = async (
     res: express.Response,
     next: express.NextFunction,
 ) => {
-    const { handleTaskData } = req?.body;
+    const handleTaskData = req?.body;
     console.log("hitted edit a task.");
     if (!handleTaskData) {
         return res.status(400).json({
@@ -79,12 +79,12 @@ export const patchTaskController = async (
         if (!getTaskData) {
             return res.status(200).json({
                 success: false,
-                message: `Job data not found.`,
+                message: `Task Data not found.`,
             });
         } else {
             return res.status(200).json({
                 success: true,
-                message: "Successfully got all jobs.",
+                message: "Successfully edit a task.",
                 data: getTaskData,
             });
         };
@@ -112,12 +112,12 @@ export const deleteTaskController = async (
         if (!getTaskData) {
             return res.status(200).json({
                 success: false,
-                message: `Job data not found.`,
+                message: `Task Data not found.`,
             });
         } else {
             return res.status(200).json({
                 success: true,
-                message: "Successfully got all jobs.",
+                message: "Successfully delete a task.",
                 data: getTaskData,
             });
         };

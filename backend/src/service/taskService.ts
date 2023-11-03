@@ -36,7 +36,10 @@ export const patchTaskService = async (
         const tasks = await TaskModel.findByIdAndUpdate(
             handleTaskData._id,
             {
-                handleTaskData
+                slNo: handleTaskData.slNo,
+                title: handleTaskData.title,
+                description: handleTaskData.description,
+                state: handleTaskData.state,
             },
             {
                 new: true
@@ -47,6 +50,7 @@ export const patchTaskService = async (
         next(error);
     }
 };
+
 // delete a task
 export const deleteTaskService = async (
     next: express.NextFunction,
