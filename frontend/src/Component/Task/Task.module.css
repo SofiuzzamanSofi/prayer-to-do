@@ -11,13 +11,15 @@
 
 .task_all_tasks {
     display: flex;
-    gap: .5rem;
+    /* gap: .5rem; */
 }
 
 .todo_progress_done {
     width: 17.5rem;
+    padding: 0 1rem;
+    padding-bottom: 4rem;
     min-width: 17.5rem;
-    /* border: 1px solid indigo; */
+    border: 1px solid blue;
 }
 
 .todo_progress_done h1 {

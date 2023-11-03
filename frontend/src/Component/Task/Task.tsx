@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import style from "./Task.module.css"
 import { TaskTypes } from '../../typesInterface/typesInterface';
 import TaskCard from '../TaskCard/TaskCard';
@@ -9,15 +9,55 @@ interface TaskProps {
 
 const Task: FC<TaskProps> = ({ taskList }) => {
 
+    const [gragElementDiv, setgragElementDiv] = useState<HTMLDivElement | null>(null);
+    const [gragElementData, setgragElementData] = useState<TaskTypes | null>(null);
+
     // console.log('taskList:', taskList);
 
     const todoTask = taskList.filter((task) => task.state === "todo");
     const progressTask = taskList.filter((task) => task.state === "in-progress");
     const doneTask = taskList.filter((task) => task.state === "done");
 
-    console.log('todoTask, :', todoTask,);
-    console.log('progressTask, :', progressTask,);
-    console.log('doneTask:', doneTask);
+    // console.log('todoTask, :', todoTask,);
+    // console.log('progressTask, :', progressTask,);
+    // console.log('doneTask:', doneTask);
+
+    const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
+        // e.preventDefault();
+        let selected = e.target as HTMLDivElement;
+        e.currentTarget.classList.add("dragged");
+        setgragElementDiv(selected);
+        setgragElementData(task);
+        console.log('selected:', selected);
+    };
+
+    const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        e.currentTarget.classList.remove("dragged");
+        setgragElementDiv(null);
+        setgragElementData(null);
+        console.log("handleDragEnd");
+    };
+
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        // console.log('e.target:', e.target);
+        // e.currentTarget.appendChild
+        console.log("handleDragOver");
+    };
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: string) => {
+        e.preventDefault();
+        // console.log('handleDrop:', e.target);
+        // console.log('handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
+
+        // console.log('handleDropData:', gragElementData);
+        if (statusName !== gragElementData?.state) {
+
+            console.log('NOT_MATCH_handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
+        }
+
+        e.currentTarget.appendChild(gragElementDiv!)
+    };
 
     return (
         <div>
@@ -28,6 +68,8 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                 <div
                     id='todo'
                     className={style.todo_progress_done}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "todo")}
                 >
                     <h1>• Todo {todoTask ? todoTask.length : ""}</h1>
                     <div className={style.todo_card_list}>
@@ -36,7 +78,12 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                                 ""
                                 :
                                 todoTask.map((task, index) => (
-                                    <TaskCard key={index} task={task} />
+                                    <TaskCard
+                                        key={index}
+                                        task={task}
+                                        handleDragStart={handleDragStart}
+                                        handleDragEnd={handleDragEnd}
+                                    />
                                 ))
                         }
                     </div>
@@ -45,6 +92,8 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                 <div
                     id='in-progress'
                     className={style.todo_progress_done}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "in-progress")}
                 >
                     <h1>• In-Progress {progressTask ? progressTask.length : ""}</h1>
                     <div className={style.todo_card_list}>
@@ -53,7 +102,12 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                                 ""
                                 :
                                 progressTask.map((task, index) => (
-                                    <TaskCard key={index} task={task} />
+                                    <TaskCard
+                                        key={index}
+                                        task={task}
+                                        handleDragStart={handleDragStart}
+                                        handleDragEnd={handleDragEnd}
+                                    />
                                 ))
                         }
                     </div>
@@ -61,6 +115,8 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                 <div
                     id='done'
                     className={style.todo_progress_done}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "done")}
                 >
                     <h1>• Done {doneTask ? doneTask.length : ""}</h1>
                     <div className={style.todo_card_list}>
@@ -69,7 +125,12 @@ const Task: FC<TaskProps> = ({ taskList }) => {
                                 ""
                                 :
                                 doneTask.map((task, index) => (
-                                    <TaskCard key={index} task={task} />
+                                    <TaskCard
+                                        key={index}
+                                        task={task}
+                                        handleDragStart={handleDragStart}
+                                        handleDragEnd={handleDragEnd}
+                                    />
                                 ))
                         }
                     </div>

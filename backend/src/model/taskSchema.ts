@@ -19,7 +19,11 @@ const taskSchema = new mongoose.Schema({
         required: true,
         enum: ["todo", "in-progress", "done"],
     },
-});
+},
+    {
+        timestamps: true,
+    }
+);
 
 // create a model
 export const TaskModel = mongoose.model("Task", taskSchema);

@@ -3,12 +3,20 @@ import style from "./TaskCard.module.css"
 import { TaskTypes } from '../../typesInterface/typesInterface';
 
 interface TaskCardProps {
-    task: TaskTypes
+    task: TaskTypes;
+    handleDragStart: (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => void;
+    handleDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
 };
 
-const TaskCard: FC<TaskCardProps> = ({ task }) => {
+const TaskCard: FC<TaskCardProps> = ({ task, handleDragStart, handleDragEnd }) => {
+
     return (
-        <div className={style.task_card}>
+        <div
+            draggable
+            onDragStart={(e) => handleDragStart(e, task)}
+            onDragEnd={handleDragEnd}
+            className={style.task_card}
+        >
             <p className={style.todo_card_title}>
                 {task.title}
             </p>
