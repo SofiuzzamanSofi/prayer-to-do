@@ -19,6 +19,7 @@
     flex-grow: 1;
     box-shadow: 0 0 5px rgb(73, 73, 73);
     overflow-x: scroll;
+    scroll-behavior: auto;
 }
 
 /* width <1024 px = small device  */
