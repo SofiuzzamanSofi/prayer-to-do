@@ -6,10 +6,9 @@ Prayer-Todo
 
 This is a [React](https://nextjs.org/) project create with [`yarn create vite`](https://vitejs.dev/guide/).
 
-### Live Preview site: Up-Commint..
+### Frontend-Live: [live-url](https://prayer-todo.vercel.app)
 
-### server-site: Up-Commint..
-### server-Demo: Up-Commint..
+### Backend-Url: [backend-uul](https://prayer-todo-server-via-cli-sofiuzzamansofi.vercel.app)
 
 <br/>
 
@@ -63,15 +62,17 @@ You can start editing clinet side the page by modifying `src/main.tsx`. The page
 client side:
 <br> • `Vite`
 <br> • `React.js`
-<br> • `typescript`
+<br> • `Typescript`
+<br> • `Raw CSS`
+<br> • `Drag & Drop Without any library`
 
 server side:
-<br> • `node.js`
-<br> • `expressjs`
-<br> • `typescript`
+<br> • `Node.js`
+<br> • `Expressjs`
+<br> • `Typescript`
 
 database:
-<br> • `mongoDB(mongoose)`
+<br> • `MongoDB(mongoose)`
 
 ## Others
 

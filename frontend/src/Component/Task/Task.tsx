@@ -5,11 +5,14 @@ import TaskCard from '../TaskCard/TaskCard';
 import toast from 'react-hot-toast';
 import { TaskContext } from '../../context/TaskProvider';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import menuClosed from "../../assets/menu-closed.svg"
+
 interface TaskProps {
+    setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    mobileMenuOpen: boolean;
+}
 
-};
-
-const Task: FC<TaskProps> = () => {
+const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
 
     const taskInfo = useContext(TaskContext);
 
@@ -23,7 +26,7 @@ const Task: FC<TaskProps> = () => {
     // drag start 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
-        let selected = e.target as HTMLDivElement;
+        const selected = e.target as HTMLDivElement
         e.currentTarget.classList.add("dragged");
         setgragElementDiv(selected);
         setgragElementData(task);
@@ -92,7 +95,15 @@ const Task: FC<TaskProps> = () => {
         <div>
             <div className={style.task_h1_tag}>
                 <h1>Task</h1>
+                {/* //mobile menu button  */}
+                <button
+                    className={`${style.closed_button_image} ${mobileMenuOpen ? style.closed_button_image_hide : ""}`}
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                    <img src={menuClosed} alt="menu-closed-button" />
+                </button>
             </div>
+
             <div className={style.task_all_tasks}>
                 <div
                     id='todo'

@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import LeftMenu from '../Component/LeftMenu/LeftMenu';
 import Task from '../Component/Task/Task';
 import style from "./TodoLayout.module.css";
-import menuClosed from "../assets/menu-closed.svg"
 
 const TodoLayout: React.FC = () => {
 
@@ -24,16 +23,10 @@ const TodoLayout: React.FC = () => {
                     !taskInfo?.taskList ?
                         ""
                         : */}
-                <Task />
+                <Task setMobileMenuOpen={setMobileMenuOpen} mobileMenuOpen={mobileMenuOpen} />
                 {/* } */}
             </aside>
 
-            <button
-                className={`${style.closed_button_image} ${mobileMenuOpen ? style.closed_button_image_hide : ""}`}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-                <img src={menuClosed} alt="menu-closed-button" />
-            </button>
             <Outlet />
         </section>
     );

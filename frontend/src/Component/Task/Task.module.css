@@ -1,7 +1,12 @@
+.task_h1_tag {
+    position: relative;
+}
+
 .task_h1_tag h1 {
     text-align: center;
     font-size: 36px;
     margin: 0;
+
 }
 
 .task_all_tasks {
@@ -22,4 +27,41 @@
 
 .todo_card_list {
     display: grid;
+}
+
+.closed_button_image {
+    display: none;
+}
+
+/* width <1024 px = small device  */
+@media only screen and (max-width: 1024px) {
+
+    .closed_button_image {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #242424;
+        border: none;
+        display: block;
+        position: absolute;
+        top: .75rem;
+        left: 1rem;
+    }
+
+    .closed_button_image_hide {
+        display: none;
+    }
+
+    .closed_button_image:hover {
+        background-color: #363636;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .closed_button_image:active {
+        transform: scale(.9);
+    }
+
 }

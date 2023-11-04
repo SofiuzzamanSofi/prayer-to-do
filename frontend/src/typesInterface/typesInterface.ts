@@ -18,4 +18,4 @@ export interface TaskInfoTypes {
     loading: boolean;
     modifyTask: (data: EditTaskTypes) => Promise<boolean>;
     setReloadData: React.Dispatch<React.SetStateAction<boolean>>
-};
+}

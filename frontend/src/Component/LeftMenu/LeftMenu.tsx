@@ -11,7 +11,7 @@ import style from "./LeftMenu.module.css"
 
 interface LeftMenuProps {
     setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
-};
+}
 
 const LeftMenu: FC<LeftMenuProps> = ({ setMobileMenuOpen }) => {
 

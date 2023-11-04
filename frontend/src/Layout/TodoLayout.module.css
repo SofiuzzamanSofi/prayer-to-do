@@ -17,10 +17,7 @@
     box-shadow: 0 0 5px rgb(73, 73, 73);
     overflow-x: scroll;
     scroll-behavior: auto;
-}
-
-.closed_button_image {
-    display: none;
+    min-height: 100vh;
 }
 
 /* width <1024 px = small device  */
@@ -37,6 +34,10 @@
         bottom: 0;
     }
 
+    .right_main_view_menu {
+        min-height: 100vh;
+    }
+
     .lef_menu_position_hide {
         left: -100rem;
     }
@@ -46,33 +47,4 @@
         padding-top: .5rem;
         left: 0;
     }
-
-    .closed_button_image {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #242424;
-        border: none;
-        display: block;
-        position: absolute;
-        top: 2.3rem;
-        left: 2rem;
-    }
-
-    .closed_button_image_hide {
-        display: none;
-    }
-
-    .closed_button_image:hover {
-        background-color: #363636;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .closed_button_image:active {
-        transform: scale(.9);
-    }
-
 }

@@ -5,7 +5,7 @@ interface TaskCardProps {
     task: TaskTypes;
     handleDragStart: (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => void;
     handleDragEnd: (e: React.DragEvent<HTMLDivElement>) => void;
-};
+}
 
 const TaskCard: FC<TaskCardProps> = ({ task, handleDragStart, handleDragEnd }) => {
 
