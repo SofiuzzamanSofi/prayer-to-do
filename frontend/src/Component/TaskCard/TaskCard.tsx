@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import style from "./TaskCard.module.css"
 import { TaskTypes } from '../../typesInterface/typesInterface';
 
 interface TaskCardProps {

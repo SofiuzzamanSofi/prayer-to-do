@@ -29,7 +29,7 @@
 }
 
 
-/* // TaskCard.module.css  */
+/* TaskCard.tsx || TaskCard.module.css  */
 .task_card {
   border-radius: 5px;
   border: 1px solid rgb(73, 73, 73);

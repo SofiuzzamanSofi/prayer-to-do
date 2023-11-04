@@ -45,7 +45,7 @@ export const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
         fetchData();
     }, [reloadData]);
 
-    const taskInfo: TaskInfoTypes = { taskList, loading, modifyTask };
+    const taskInfo: TaskInfoTypes = { taskList, loading, modifyTask, setReloadData };
 
     return (
         <TaskContext.Provider value={taskInfo}>
