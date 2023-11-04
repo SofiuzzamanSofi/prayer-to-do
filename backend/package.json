@@ -1,6 +1,6 @@
 {
-  "name": "to-do-server",
-  "description": "to-do-server-description",
+  "name": "prayer-todo-server",
+  "description": "prayer-todo-server-description",
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
