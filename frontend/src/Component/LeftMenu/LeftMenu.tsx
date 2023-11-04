@@ -10,10 +10,10 @@ import style from "./LeftMenu.module.css"
 
 
 interface LeftMenuProps {
-
+    setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const LeftMenu: FC<LeftMenuProps> = ({ }) => {
+const LeftMenu: FC<LeftMenuProps> = ({ setMobileMenuOpen }) => {
 
     const profileName = "Sofi";
 
@@ -30,7 +30,7 @@ const LeftMenu: FC<LeftMenuProps> = ({ }) => {
                             <span>
                                 {profileName}
                             </span>
-                            <img src={downArrow} alt="" />
+                            <img src={downArrow} alt="menu-closed-button" />
                         </div>
                     </button>
                 </div>
@@ -38,7 +38,10 @@ const LeftMenu: FC<LeftMenuProps> = ({ }) => {
                     <button className={style.closed_button_image}>
                         <img src={bell} alt="" />
                     </button>
-                    <button className={style.closed_button_image}>
+                    <button
+                        className={`${style.closed_button_image} ${style.mobile_menu_button}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
                         <img src={menuClosed} alt="" />
                     </button>
                 </div>

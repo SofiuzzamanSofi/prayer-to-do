@@ -1,17 +1,11 @@
-.task_h1_tag {
-    border: 1px solid red;
-}
-
 .task_h1_tag h1 {
     text-align: center;
     font-size: 36px;
-    /* border: 1px solid red; */
     margin: 0;
 }
 
 .task_all_tasks {
     display: flex;
-    /* gap: .5rem; */
 }
 
 .todo_progress_done {
@@ -19,7 +13,6 @@
     padding: 0 1rem;
     padding-bottom: 4rem;
     min-width: 17.5rem;
-    border: 1px solid blue;
 }
 
 .todo_progress_done h1 {
@@ -29,5 +22,4 @@
 
 .todo_card_list {
     display: grid;
-    /* gap: 1rem; */
 }

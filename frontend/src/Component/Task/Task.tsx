@@ -20,6 +20,7 @@ const Task: FC<TaskProps> = () => {
     const progressTask = taskInfo?.taskList?.filter((task) => task.state === "in-progress");
     const doneTask = taskInfo?.taskList?.filter((task) => task.state === "done");
 
+    // drag start 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
         let selected = e.target as HTMLDivElement;
@@ -29,19 +30,12 @@ const Task: FC<TaskProps> = () => {
         console.log('selected:', selected);
     };
 
-    const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        e.currentTarget.classList.remove("dragged");
-        setgragElementDiv(null);
-        setgragElementData(null);
-        // console.log("handleDragEnd");
-    };
-
+    // dragOver || draging 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
     };
 
-    // dropu and edit the data of mongodb 
+    // drop and edit the data of mongodb 
     const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
         e.preventDefault();
         if (statusName !== gragElementData?.state) {
@@ -59,6 +53,15 @@ const Task: FC<TaskProps> = () => {
             e.currentTarget.appendChild(gragElementDiv!);
             toast.success("edit success")
         }
+    };
+
+    // drag end 
+    const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        e.currentTarget.classList.remove("dragged");
+        setgragElementDiv(null);
+        setgragElementData(null);
+        // console.log("handleDragEnd");
     };
 
     if (taskInfo?.loading) {
