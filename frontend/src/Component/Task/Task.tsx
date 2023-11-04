@@ -47,7 +47,29 @@ const Task: FC<TaskProps> = () => {
             else {
                 toast.error("Update task failed, Try again later.");
             }
+            // e.currentTarget.appendChild(gragElementDiv!);
+
+            const elementModifyDiv = document.createElement('div');
+            elementModifyDiv.draggable = true;
+            elementModifyDiv.classList.add("task_card");
+
+            elementModifyDiv.addEventListener('dragstart', (e: Event) => handleDragStart(e as unknown as React.DragEvent<HTMLDivElement>, newData));
+            elementModifyDiv.addEventListener('dragend', (e: Event) => handleDragEnd(e as unknown as React.DragEvent<HTMLDivElement>));
+
+            elementModifyDiv.innerHTML = `
+                <p class="todo_card_title">
+                    ${newData.title}
+                </p>
+                <p class="todo_card_description" title="${newData.description}">
+                    ${newData.description}
+                </p>
+                <p>
+                    Status: <button>${newData.state}</button>
+                </p>
+            `;
+            setgragElementDiv(elementModifyDiv)
             e.currentTarget.appendChild(gragElementDiv!);
+
         }
         else {
             e.currentTarget.appendChild(gragElementDiv!);

@@ -15,13 +15,13 @@ const TaskCard: FC<TaskCardProps> = ({ task, handleDragStart, handleDragEnd }) =
             draggable
             onDragStart={(e) => handleDragStart(e, task)}
             onDragEnd={handleDragEnd}
-            className={style.task_card}
+            className="task_card"
         >
-            <p className={style.todo_card_title}>
+            <p className="todo_card_title">
                 {task.title}
             </p>
             <p
-                className={style.todo_card_description}
+                className="todo_card_description"
                 title={task.description}
             >
                 {task.description}
