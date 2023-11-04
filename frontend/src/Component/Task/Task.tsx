@@ -1,16 +1,15 @@
 import React, { FC, useState, useContext } from 'react';
 import style from "./Task.module.css"
-import { TaskTypes, EditTaskTypes } from '../../typesInterface/typesInterface';
+import { TaskTypes } from '../../typesInterface/typesInterface';
 import TaskCard from '../TaskCard/TaskCard';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { TaskContext } from '../../context/TaskProvider';
 import LoadingPage from '../LoadingPage/LoadingPage';
 interface TaskProps {
-    taskList: TaskTypes[]
+
 };
 
-const Task: FC<TaskProps> = ({ taskList }) => {
+const Task: FC<TaskProps> = () => {
 
     const taskInfo = useContext(TaskContext);
 
@@ -20,20 +19,6 @@ const Task: FC<TaskProps> = ({ taskList }) => {
     const todoTask = taskInfo?.taskList?.filter((task) => task.state === "todo");
     const progressTask = taskInfo?.taskList?.filter((task) => task.state === "in-progress");
     const doneTask = taskInfo?.taskList?.filter((task) => task.state === "done");
-
-    // modify task function
-    // const modifyTask = async (data: EditTaskTypes) => {
-    //     try {
-    //         const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/patch-task`, data);
-    //         console.log('response.data:', response.data);
-    //         toast.success("edit success")
-    //         if (response.data?.success) {
-
-    //         };
-    //     } catch (error) {
-    //         toast.error("Update task failed, Try again later.")
-    //     }
-    // };
 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
@@ -49,43 +34,33 @@ const Task: FC<TaskProps> = ({ taskList }) => {
         e.currentTarget.classList.remove("dragged");
         setgragElementDiv(null);
         setgragElementData(null);
-        console.log("handleDragEnd");
+        // console.log("handleDragEnd");
     };
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
-        // console.log('e.target:', e.target);
-        // e.currentTarget.appendChild
-        console.log("handleDragOver");
     };
 
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: string) => {
+    // dropu and edit the data of mongodb 
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
         e.preventDefault();
-        // console.log('handleDrop:', e.target);
-        // console.log('handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
-
-        console.log('handleDropData:', gragElementData);
         if (statusName !== gragElementData?.state) {
-            // console.log('NOT_MATCH_handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
             const newData = { ...gragElementData, state: statusName };
-            if (gragElementData && newData) {
-
-                const modifyTask = taskInfo?.modifyTask(newData);
-                if (modifyTask) {
-                    toast.success("edit success")
-                }
-                else {
-                    toast.error("Update task failed, Try again later.");
-                }
-                e.currentTarget.appendChild(gragElementDiv!);
+            const modifyTask = taskInfo?.modifyTask(newData);
+            if (modifyTask) {
+                toast.success("edit success");
             }
+            else {
+                toast.error("Update task failed, Try again later.");
+            }
+            e.currentTarget.appendChild(gragElementDiv!);
         }
         else {
             e.currentTarget.appendChild(gragElementDiv!);
+            toast.success("edit success")
         }
     };
 
-    console.log('taskInfo:', taskInfo);
     if (taskInfo?.loading) {
         return <LoadingPage />
     }
