@@ -1,4 +1,6 @@
-.loading_image {
-    min-height: 100vh;
-    min-width: 100vh;
+.loading_image_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
 }
