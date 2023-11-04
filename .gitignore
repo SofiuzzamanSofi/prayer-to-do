@@ -13,8 +13,12 @@ build
 dist-ssr
 *.local
 
+
 .env
 .env.local
+package-lock.json
+yarn.lock
+
 
 
 
