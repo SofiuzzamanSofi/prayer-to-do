@@ -29,5 +29,5 @@
 
 .todo_card_list {
     display: grid;
-    gap: 1rem;
+    /* gap: 1rem; */
 }

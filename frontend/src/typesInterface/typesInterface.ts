@@ -16,4 +16,5 @@ export interface EditTaskTypes {
 export interface TaskInfoTypes {
     taskList: TaskTypes[] | undefined;
     loading: boolean;
+    modifyTask: (data: EditTaskTypes) => Promise<boolean>;
 };

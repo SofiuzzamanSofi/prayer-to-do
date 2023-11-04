@@ -1,36 +1,39 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import style from "./Task.module.css"
 import { TaskTypes, EditTaskTypes } from '../../typesInterface/typesInterface';
 import TaskCard from '../TaskCard/TaskCard';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { TaskContext } from '../../context/TaskProvider';
+import LoadingPage from '../LoadingPage/LoadingPage';
 interface TaskProps {
     taskList: TaskTypes[]
 };
 
 const Task: FC<TaskProps> = ({ taskList }) => {
 
+    const taskInfo = useContext(TaskContext);
+
     const [gragElementDiv, setgragElementDiv] = useState<HTMLDivElement | null>(null);
     const [gragElementData, setgragElementData] = useState<TaskTypes | null>(null);
 
-    // toast.success("hlelo")
-    // toast.error("error")
+    const todoTask = taskInfo?.taskList?.filter((task) => task.state === "todo");
+    const progressTask = taskInfo?.taskList?.filter((task) => task.state === "in-progress");
+    const doneTask = taskInfo?.taskList?.filter((task) => task.state === "done");
 
-    const modifyTask = async (data: EditTaskTypes) => {
-        try {
-            const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/patch-task`, data);
-            console.log('response.data:', response.data);
-            toast.success("edit success")
-            return response.data;
-        } catch (error) {
-            toast.error("Update task failed, Try again later.")
-        }
-    };
+    // modify task function
+    // const modifyTask = async (data: EditTaskTypes) => {
+    //     try {
+    //         const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/patch-task`, data);
+    //         console.log('response.data:', response.data);
+    //         toast.success("edit success")
+    //         if (response.data?.success) {
 
-    const todoTask = taskList.filter((task) => task.state === "todo");
-    const progressTask = taskList.filter((task) => task.state === "in-progress");
-    const doneTask = taskList.filter((task) => task.state === "done");
-
+    //         };
+    //     } catch (error) {
+    //         toast.error("Update task failed, Try again later.")
+    //     }
+    // };
 
     const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
@@ -55,6 +58,7 @@ const Task: FC<TaskProps> = ({ taskList }) => {
         // e.currentTarget.appendChild
         console.log("handleDragOver");
     };
+
     const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: string) => {
         e.preventDefault();
         // console.log('handleDrop:', e.target);
@@ -65,13 +69,26 @@ const Task: FC<TaskProps> = ({ taskList }) => {
             // console.log('NOT_MATCH_handleDrop-statusName:', statusName, "data-statusName", gragElementData?.state);
             const newData = { ...gragElementData, state: statusName };
             if (gragElementData && newData) {
-                modifyTask(newData);
-            }
-            console.log('newData:', newData);
-        }
 
-        e.currentTarget.appendChild(gragElementDiv!)
+                const modifyTask = taskInfo?.modifyTask(newData);
+                if (modifyTask) {
+                    toast.success("edit success")
+                }
+                else {
+                    toast.error("Update task failed, Try again later.");
+                }
+                e.currentTarget.appendChild(gragElementDiv!);
+            }
+        }
+        else {
+            e.currentTarget.appendChild(gragElementDiv!);
+        }
     };
+
+    console.log('taskInfo:', taskInfo);
+    if (taskInfo?.loading) {
+        return <LoadingPage />
+    }
 
     return (
         <div>

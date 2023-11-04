@@ -36,15 +36,13 @@ export const patchTaskService = async (
         const tasks = await TaskModel.findByIdAndUpdate(
             handleTaskData._id,
             {
-                slNo: handleTaskData.slNo,
-                title: handleTaskData.title,
-                description: handleTaskData.description,
-                state: handleTaskData.state,
+                ...handleTaskData
             },
             {
                 new: true
             }
         );
+        console.log('tasks:', tasks);
         return tasks;
     } catch (error) {
         next(error);
