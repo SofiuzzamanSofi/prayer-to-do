@@ -10,8 +10,6 @@ const TodoLayout: React.FC = () => {
     // const taskInfo = useContext(TaskContext);
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
-    console.log('mobileMenu:', mobileMenuOpen);
-
     return (
         <section className={style.layout_menu}>
             <aside

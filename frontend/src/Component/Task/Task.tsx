@@ -27,7 +27,7 @@ const Task: FC<TaskProps> = () => {
         e.currentTarget.classList.add("dragged");
         setgragElementDiv(selected);
         setgragElementData(task);
-        console.log('selected:', selected);
+        // console.log('selected:', selected);
     };
 
     // dragOver || draging 
@@ -43,33 +43,32 @@ const Task: FC<TaskProps> = () => {
             const modifyTask = taskInfo?.modifyTask(newData);
             if (modifyTask) {
                 toast.success("edit success");
+
+                // after mongodb modify data work locally
+                const elementModifyDiv = document.createElement('div');
+                elementModifyDiv.draggable = true;
+                elementModifyDiv.classList.add("task_card");
+
+                elementModifyDiv.addEventListener('dragstart', (e: Event) => handleDragStart(e as unknown as React.DragEvent<HTMLDivElement>, newData));
+                elementModifyDiv.addEventListener('dragend', (e: Event) => handleDragEnd(e as unknown as React.DragEvent<HTMLDivElement>));
+
+                elementModifyDiv.innerHTML = `
+                    <p class="todo_card_title">
+                        ${newData.title}
+                    </p>
+                    <p class="todo_card_description" title="${newData.description}">
+                        ${newData.description}
+                    </p>
+                    <p>
+                        Status: <button>${newData.state}</button>
+                    </p>
+                `;
+                setgragElementDiv(elementModifyDiv)
+                e.currentTarget.appendChild(gragElementDiv!);
             }
             else {
                 toast.error("Update task failed, Try again later.");
             }
-            // e.currentTarget.appendChild(gragElementDiv!);
-
-            const elementModifyDiv = document.createElement('div');
-            elementModifyDiv.draggable = true;
-            elementModifyDiv.classList.add("task_card");
-
-            elementModifyDiv.addEventListener('dragstart', (e: Event) => handleDragStart(e as unknown as React.DragEvent<HTMLDivElement>, newData));
-            elementModifyDiv.addEventListener('dragend', (e: Event) => handleDragEnd(e as unknown as React.DragEvent<HTMLDivElement>));
-
-            elementModifyDiv.innerHTML = `
-                <p class="todo_card_title">
-                    ${newData.title}
-                </p>
-                <p class="todo_card_description" title="${newData.description}">
-                    ${newData.description}
-                </p>
-                <p>
-                    Status: <button>${newData.state}</button>
-                </p>
-            `;
-            setgragElementDiv(elementModifyDiv)
-            e.currentTarget.appendChild(gragElementDiv!);
-
         }
         else {
             e.currentTarget.appendChild(gragElementDiv!);
@@ -83,7 +82,6 @@ const Task: FC<TaskProps> = () => {
         e.currentTarget.classList.remove("dragged");
         setgragElementDiv(null);
         setgragElementData(null);
-        // console.log("handleDragEnd");
     };
 
     if (taskInfo?.loading) {

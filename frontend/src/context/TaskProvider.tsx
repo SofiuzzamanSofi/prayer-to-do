@@ -34,7 +34,6 @@ export const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // console.log('fetch-data-effect-call:');
                 const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/all-task`);
                 setTaskList(response.data.data);
                 setLoading(false);

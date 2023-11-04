@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Link, useRouteError, ErrorResponse } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 
 
 const ErrorPage = () => {
 
     const error: any = useRouteError();
-    console.log(error);
 
     const myH1TagsStyle = {
         color: 'white',

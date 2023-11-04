@@ -42,7 +42,6 @@ export const patchTaskService = async (
                 new: true
             }
         );
-        console.log('tasks:', tasks);
         return tasks;
     } catch (error) {
         next(error);
