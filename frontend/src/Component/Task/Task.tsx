@@ -24,7 +24,7 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
     const doneTask = taskInfo?.taskList?.filter((task) => task.state === "done");
 
     // drag start 
-    const handleDragStart = (e: React.DragEvent<HTMLDivElement>, task: TaskTypes) => {
+    const handleDragStart = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, task: TaskTypes) => {
         // e.preventDefault();
         const selected = e.target as HTMLDivElement
         e.currentTarget.classList.add("dragged");
@@ -33,20 +33,23 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
     };
 
     // dragOver || draging 
-    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
         e.preventDefault();
     };
 
     // drop and edit the data of mongodb 
-    const handleDrop = async (e: React.DragEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
+    const handleDrop = async (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
         e.preventDefault();
+
+        e.currentTarget.appendChild(grabElementDiv!);
+
         if (statusName !== grabElementData?.state) {
             const newData = { ...grabElementData, state: statusName };
 
             //edit mongodb data
             const modifyTask = await taskInfo?.modifyTask(newData);
             if (modifyTask === true) {
-                e.currentTarget.appendChild(grabElementDiv!);
+                // e.currentTarget.appendChild(grabElementDiv!);
                 toast.success("edit success");
             }
             else {
@@ -54,13 +57,13 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
             }
         }
         else {
-            e.currentTarget.appendChild(grabElementDiv!);
+            // e.currentTarget.appendChild(grabElementDiv!);
             toast.success("edit success")
         }
     };
 
     // drag end 
-    const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    const handleDragEnd = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.currentTarget.classList.remove("dragged");
         setGrabElementDiv(null);
