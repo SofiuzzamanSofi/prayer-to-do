@@ -18,8 +18,8 @@ export const TaskProvider: FC<TaskProviderProps> = ({ children }) => {
         try {
             const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/patch-task`, data);
             if (response.data?.success) {
-                // setReloadData(!reloadData);
-                // setLoading(true);
+                setReloadData(!reloadData);
+                setLoading(true);
                 return true;
             }
             else {

@@ -16,8 +16,8 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
 
     const taskInfo = useContext(TaskContext);
 
-    const [gragElementDiv, setgragElementDiv] = useState<HTMLDivElement | null>(null);
-    const [gragElementData, setgragElementData] = useState<TaskTypes | null>(null);
+    const [grabElementDiv, setGrabElementDiv] = useState<HTMLDivElement | null>(null);
+    const [grabElementData, setGrabElementData] = useState<TaskTypes | null>(null);
 
     const todoTask = taskInfo?.taskList?.filter((task) => task.state === "todo");
     const progressTask = taskInfo?.taskList?.filter((task) => task.state === "in-progress");
@@ -28,9 +28,8 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
         // e.preventDefault();
         const selected = e.target as HTMLDivElement
         e.currentTarget.classList.add("dragged");
-        setgragElementDiv(selected);
-        setgragElementData(task);
-        // console.log('selected:', selected);
+        setGrabElementDiv(selected);
+        setGrabElementData(task);
     };
 
     // dragOver || draging 
@@ -39,47 +38,23 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
     };
 
     // drop and edit the data of mongodb 
-    const handleDrop = (e: React.DragEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
+    const handleDrop = async (e: React.DragEvent<HTMLDivElement>, statusName: "todo" | "in-progress" | "done") => {
         e.preventDefault();
-        if (statusName !== gragElementData?.state) {
-            const newData = { ...gragElementData, state: statusName };
-            const modifyTask = taskInfo?.modifyTask(newData);
+        if (statusName !== grabElementData?.state) {
+            const newData = { ...grabElementData, state: statusName };
+
+            //edit mongodb data
+            const modifyTask = await taskInfo?.modifyTask(newData);
             if (modifyTask === true) {
+                e.currentTarget.appendChild(grabElementDiv!);
                 toast.success("edit success");
-
-                // after mongodb modify data work locally
-                const elementModifyDiv = document.createElement('div');
-                elementModifyDiv.draggable = true;
-                elementModifyDiv.classList.add("task_card");
-
-                elementModifyDiv.addEventListener('dragstart', (e: Event) => handleDragStart(e as unknown as React.DragEvent<HTMLDivElement>, newData));
-                elementModifyDiv.addEventListener('dragend', (e: Event) => handleDragEnd(e as unknown as React.DragEvent<HTMLDivElement>));
-
-                elementModifyDiv.innerHTML = `
-                    <p class="todo_card_title">
-                        ${newData.title}
-                    </p>
-                    <p class="todo_card_description" title="${newData.description}">
-                        ${newData.description}
-                    </p>
-                    <p>
-                        Status: <button>${newData.state}</button>
-                    </p>
-                `;
-                console.log('newData:', newData);
-                setgragElementDiv(elementModifyDiv);
-                e.currentTarget.appendChild(gragElementDiv!);
-
-                console.log('console-1:');
             }
             else {
-                console.log('console-2:');
                 toast.error("Update task failed, Try again later.");
             }
         }
         else {
-            console.log('console-3:');
-            e.currentTarget.appendChild(gragElementDiv!);
+            e.currentTarget.appendChild(grabElementDiv!);
             toast.success("edit success")
         }
     };
@@ -88,8 +63,8 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
     const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.currentTarget.classList.remove("dragged");
-        setgragElementDiv(null);
-        setgragElementData(null);
+        setGrabElementDiv(null);
+        setGrabElementData(null);
     };
 
     if (taskInfo?.loading) {
