@@ -44,7 +44,7 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
         if (statusName !== gragElementData?.state) {
             const newData = { ...gragElementData, state: statusName };
             const modifyTask = taskInfo?.modifyTask(newData);
-            if (modifyTask) {
+            if (modifyTask === true) {
                 toast.success("edit success");
 
                 // after mongodb modify data work locally
@@ -66,14 +66,19 @@ const Task: FC<TaskProps> = ({ setMobileMenuOpen, mobileMenuOpen }) => {
                         Status: <button>${newData.state}</button>
                     </p>
                 `;
-                setgragElementDiv(elementModifyDiv)
+                console.log('newData:', newData);
+                setgragElementDiv(elementModifyDiv);
                 e.currentTarget.appendChild(gragElementDiv!);
+
+                console.log('console-1:');
             }
             else {
+                console.log('console-2:');
                 toast.error("Update task failed, Try again later.");
             }
         }
         else {
+            console.log('console-3:');
             e.currentTarget.appendChild(gragElementDiv!);
             toast.success("edit success")
         }
