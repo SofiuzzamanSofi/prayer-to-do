@@ -4,7 +4,7 @@ Prayer-Todo
 
 <br/>
 
-This is a [React](https://nextjs.org/) project create with [`yarn create vite`](https://vitejs.dev/guide/).
+This is a [React](https://react.dev) project create with [`yarn create vite`](https://vitejs.dev/guide/).
 
 ### Frontend-Live: [live-url](https://prayer-todo.vercel.app)
 
